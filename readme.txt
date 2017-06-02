@@ -18,11 +18,11 @@ Running backup with cron
 
 
 5. Then run the below command to backup your data for every minute
-	sudo docker run -e DATABASE=<database name> -e DATABASE_HOST=172.17.0.1 -e S3_BUCKET=fernlink-influxdb -e AWS_ACCESS_KEY_ID=AKIAJPGHD6XM3DHIDZDA -e AWS_SECRET_ACCESS_KEY=Lsx/mk1N44BxPvh43VmoqvL1TYq1jF1RF2TXYV0J -e AWS_DEFAULT_REGION=us-west-2  035e6e566656 cron "* * * * *"
+	sudo docker run -e DATABASE=<database name> -e DATABASE_HOST=172.17.0.1 -e S3_BUCKET=<bucket-name> -e AWS_ACCESS_KEY_ID=<aws-access-key> -e AWS_SECRET_ACCESS_KEY=<aws-secret-access-key> -e AWS_DEFAULT_REGION=us-west-2  035e6e566656 cron "* * * * *"
 
 
 6. Before backup stop the influxdb server. Then run the below command to restore the latest backup from s3
-	sudo docker run -v /var/lib/influxdb:/var/lib/influxdb  -e DATABASE=<database name> -e S3_BUCKET=fernlink-influxdb -e AWS_ACCESS_KEY_ID=AKIAJPGHD6XM3DHIDZDA -e AWS_SECRET_ACCESS_KEY=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 -e AWS_DEFAULT_REGION=us-west-2 035e6e566656 restore
+	sudo docker run -v /var/lib/influxdb:/var/lib/influxdb  -e DATABASE=<database name> -e S3_BUCKET=<bucket-name> -e AWS_ACCESS_KEY_ID=<aws-access-key> -e AWS_SECRET_ACCESS_KEY=<aws-secret-access-key> -e AWS_DEFAULT_REGION=us-west-2 035e6e566656 restore
 
 
 7. Start your server and checkout the database.
